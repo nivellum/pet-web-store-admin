@@ -54,7 +54,6 @@ const CategoriesGrid = ({ className }: CategoriesGridProps) => {
     useEffect(() => {
         getCategories().then((data: Category[]) => {
             setCategories(data);
-
         });
     }, []);
 
@@ -93,8 +92,6 @@ const CategoriesGrid = ({ className }: CategoriesGridProps) => {
                 <div className="categories-grid__card">
                     <CategoryCard id={currentCategory?._id} name={currentCategory?.name} />
                 </div>
-
-
             </div>
         </>
     )

@@ -33,7 +33,7 @@ const Modal = ({ showCloseButton = true, onClose, closeOnBackdropClick = true, t
         if (open) {
             setJustMounted(false);
             setOpenClass("modal_open");
-            timeout = setTimeout(() => { setVisibleClass("modal_visible") }, 1);
+            timeout = setTimeout(() => { setVisibleClass("modal_visible") }, 10);
         } else {
 
             if (justMounted)

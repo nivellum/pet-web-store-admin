@@ -1,4 +1,4 @@
-import { useDeferredValue, useEffect, useRef, useState } from "react";
+import { memo, useDeferredValue, useEffect, useRef, useState } from "react";
 import "./list-view.style.scss";
 
 export type ListViewItemType = {
@@ -15,25 +15,32 @@ type ListViewProps = {
 
 
 export const ListView = ({ className, activeItemId, items, handleClick }: ListViewProps) => {
-
-    const defferedItems = useDeferredValue<ListViewItemType[] | null>(items);
-    const newElementRef = useRef();
     const [lastAddedItem, setLastAddedItem] = useState<ListViewItemType | null>(null);
-
+    const [justMounted, setJustMounted] = useState<boolean>(true);
+    const lastAddedItemRef = useRef<HTMLLIElement>(null);
 
     useEffect(() => {
-        const newItem = defferedItems?.filter(x => !items?.includes(x));
-        if (newItem && newItem.length > 0)
-            setLastAddedItem(newItem[0]);
-    }, [defferedItems]);
+        if (justMounted) setJustMounted(false);
+        else {
+            if (items)
+                setLastAddedItem(items.slice(items.length - 1)[0]);
+        }
+    }, [items]);
 
+    useEffect(() => {
+        if(lastAddedItemRef.current)
+            lastAddedItemRef.current.scrollIntoView();
+    }, [lastAddedItemRef?.current]);
+
+
+    console.log({ lastAddedItem, justMounted });
 
     return (
         <ul className={`list-view ${className ?? ''}`}>
             <li className='list-view__count'> {items?.length} items</li>
             {items && items.map((x: ListViewItemType, index: number) =>
                 <li
-                    // {...(x.id == lastAddedItem?.id ? { ref: newElementRef } : {})}
+                    {...(x.id === lastAddedItem?.id ? { ref: lastAddedItemRef } : {})}
                     // ref={x.id == lastAddedItem?.id && newElementRef}
                     key={index}
                     className={`list-view__item ${activeItemId === x.id ? 'list-view__item_active' : ''}`}
