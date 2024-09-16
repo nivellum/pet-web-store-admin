@@ -1,0 +1,23 @@
+@import './root.variables.scss';
+
+body :nth-child(n){
+    scrollbar-width: thin;
+    scroll-padding: 10px;
+    scrollbar-gutter: 10px;
+    overflow-clip-margin: 10px;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: $_pageHeight;
+    box-sizing: border-box;
+
+    &__title {
+        margin-bottom: $_pageTitleMarginBottom;
+    }
+    
+    &__content {
+        flex-grow: 1;
+    }
+}

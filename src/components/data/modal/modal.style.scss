@@ -1,0 +1,86 @@
+@import '../../../root.variables.scss';
+
+.modal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+    z-index: 9;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    // transition: 0.2s all ease;
+
+    &_open {
+        display: flex;
+    }
+
+    &_visible {
+        opacity: 1;
+    }
+
+    &__backdrop {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #0009;
+        z-index: 1;
+
+        &_clickable {
+            cursor: pointer;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #f5f5f5;
+    }
+    &__close {
+        border: none;
+        background-color: transparent;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        transition: 0.2s all ease;
+        border-radius: 10px;
+
+        font-size: 1.1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover{
+            background-color: #eee;
+        }
+    }
+    &__dialog {
+        // min-width: 300px;
+        // min-height: 100px;
+        background-color: #fff;
+        z-index: 2;
+        border-radius: $blocksBorderRadius;
+        padding: 10px;
+        padding-top: 10px;
+        box-sizing: border-box;
+    }
+
+    &__title {
+        padding: 10px;
+        font-size: 1.10rem;
+        font-weight: 500;
+    }
+
+    &__body {
+        margin: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,35 @@
+@import '../../../root.variables.scss'; 
+
+.navigation {
+    color: $navColor;
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    height: $_headerHeight;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+
+    &__title {
+        justify-self: start;
+        position: absolute;
+        left: 20px;
+        
+        font-weight: 800;
+        font-size: 18px;
+    }
+
+    &__buttons {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__auth {
+        position: absolute;
+        right: 20px;
+    }
+}

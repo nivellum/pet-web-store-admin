@@ -1,0 +1,29 @@
+@import '../../../../root.variables.scss';
+
+.category-card{
+    display: flex;
+    flex-direction: column;
+    padding: $blocksPadding;
+    border-radius: $blocksBorderRadius;
+    border: $blocksBorder;
+    box-shadow: $blocksBoxShadow;
+    background-color: $blocksBackgroundColor;
+    height: 100%;
+    box-sizing: border-box;
+
+    &_no-content {
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__message {
+        font-weight: 500;
+    }
+
+    &__name {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+
+}

@@ -1,0 +1,41 @@
+@import '../../../root.variables.scss';
+
+.button {
+    border: none;
+    height: $_buttonHeight;
+    border-radius: $buttonsBorderRadius;
+    cursor: pointer;
+    background-color: $buttonBackgroundColor;
+    color: $buttonColor;
+    // border: 1px solid #eee;
+    transition: 0.2s all ease;
+    font-size: 0.9rem;
+
+    text-shadow: 0 2px 2px #0005;
+    
+    font-weight: 600;
+
+    &:hover {
+        background-color: $buttonHoverBackgroundColor;
+        box-shadow: 0 3px 10px #0001;
+        scale: 1.03;
+    }
+
+    &_primary {
+        background-color: $buttonPrimaryBackgroundColor;
+        color: $buttonPrimaryColor;
+
+        &:hover{
+            background-color: $buttonPrimaryHoverBackgroundColor;
+        }
+    }
+
+    &_success {
+        background-color: $buttonSuccessBackgroundColor;
+        color: $buttonSuccessColor;
+
+        &:hover{
+            background-color: $buttonSuccessHoverBackgroundColor;
+        }
+    }
+}

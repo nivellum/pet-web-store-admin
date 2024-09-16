@@ -1,0 +1,33 @@
+@import '../../root.variables.scss';
+
+.layout {
+    background-color: $layoutBackgroundColor;
+    width: $_layoutWidth;
+    height: $_layoutHeight;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+
+    &__header {
+        height: $_headerHeight;
+    }
+
+    &__main {
+        background-color: $layoutMainBackgroundColor;
+        height: $_layoutMainHeight;
+        margin: $_layoutMainMargin;
+        margin-top: 0;
+        border-radius: 30px;
+        padding: $_layoutMainPadding;
+    }
+}
+
+.content{
+    &__heading {
+
+    }
+
+    &__body {
+        
+    }
+}

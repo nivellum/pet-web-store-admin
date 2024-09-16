@@ -1,0 +1,32 @@
+@import '../../../root.variables.scss';
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    &__field {
+        padding: 5px 10px;
+        border-radius: 10px;
+        border: 2px solid #eee;
+        min-height: 24px;
+        font-size: 1.05rem;
+        transition: 0.2s all ease;
+        outline: none;
+        
+        &:hover {
+            border: 2px solid #ddd;
+            box-shadow: 0 0 0px 4px #f5f5f5;
+        }
+
+        &:focus, &:active {
+            border: 2px solid #bbb;
+            box-shadow: 0 0 0px 4px #eee;
+        }
+    }
+}

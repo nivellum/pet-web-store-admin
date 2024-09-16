@@ -1,0 +1,42 @@
+@import '../../../../root.variables.scss';
+
+.categories-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    max-height: $_categoriesGridMaxHeight;
+
+    &__collection {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 300px;
+        gap: $_categoriesGridCollectionGap;
+        max-height: $_categoriesGridCollectionMaxHeight;
+        // overflow-y: hidden;
+    }
+
+    &__card {
+        flex-grow: 1;
+    }
+
+    &__buttons {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        & :nth-child(n) {
+          flex-grow: 1;  
+        }
+    }
+    &__list {
+        box-sizing: border-box;
+        border: $blocksBorder;
+        background-color: $blocksBackgroundColor;
+        border-radius: $blocksBorderRadius;
+        box-shadow: $blocksBoxShadow;
+        // padding: 10px;
+        flex-grow: 1;
+        // max-height: fit-content;
+        
+    }
+}

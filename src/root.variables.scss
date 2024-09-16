@@ -1,0 +1,58 @@
+$_headerHeight: 60px;
+
+$_layoutMainColor: #1B1B1D;
+$_layoutPrimaryColor: #016FB9;
+$_layoutHeight: 100vh;
+$_layoutWidth: 100vw;
+$_layoutMainHeight: calc($_layoutHeight - $_headerHeight);
+$_layoutMainMargin: 5px;
+$_layoutMainPadding: 20px;
+
+$_pageTitleHeight: 40px;
+$_pageTitleMarginBottom: 20px; 
+
+$_buttonHeight: 40px;
+
+$_pageHeight: calc($_layoutMainHeight - 2 * $_layoutMainPadding - $_layoutMainMargin);
+
+$_categoriesGridMaxHeight: calc($_pageHeight - $_pageTitleHeight - $_pageTitleMarginBottom);
+$_categoriesGridCollectionMaxHeight: $_categoriesGridMaxHeight;
+$_categoriesGridCollectionGap: 20px;
+$_categoriesGridCollectionListMaxHeight: calc($_categoriesGridCollectionMaxHeight - $_categoriesGridCollectionGap - $_buttonHeight);
+
+
+$buttonsBorderRadius: 15px;
+$blocksBorderRadius: 20px;
+$blocksPadding: 15px;
+$blocksBackgroundColor: #fff;
+$blocksBorder: 1px solid #f0f0f0;
+$blocksBoxShadow: 0 5px 10px #eee;
+
+$layoutBackgroundColor: $_layoutMainColor;
+$layoutMainBackgroundColor: #fff;
+
+$navColor: #fff;
+
+$navLinkColor: #fff;
+$navLinkBackgroundColor: transparent;
+
+$navLinkHoverBackgroundColor: #fff2;
+$navLinkActiveBackgroundColor: #fff;
+$navLinkActiveColor: $_layoutMainColor;
+
+$navLinkActiveBoxShadowColor: #fff6;
+$navLinkActiveHoverBackgroundColor: #fffd;
+
+$buttonBackgroundColor: #eee;
+$buttonColor: $_layoutMainColor;
+$buttonHoverBackgroundColor: #ddd;
+
+$buttonPrimaryBackgroundColor: #016FB9;
+$buttonPrimaryColor: #fff;
+$buttonPrimaryHoverBackgroundColor: #127Fca;
+
+$buttonSuccessBackgroundColor: #50C878;
+$buttonSuccessColor: #fff;
+$buttonSuccessHoverBackgroundColor: #61D989;
+
+$pageTitleColor: $_layoutMainColor;
