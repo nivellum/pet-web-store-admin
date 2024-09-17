@@ -7,17 +7,18 @@
     cursor: pointer;
     background-color: $buttonBackgroundColor;
     color: $buttonColor;
+    line-height: 20px;
     // border: 1px solid #eee;
     transition: 0.2s all ease;
-    font-size: 0.9rem;
-    padding: 0 15px;
-    text-shadow: 0 2px 2px #0005;
+    font-size: 0.95rem;
+    padding: 0 10px;
+    // text-shadow: 0 2px 2px #0005;
 
     font-weight: 600;
 
     &:hover {
         background-color: $buttonHoverBackgroundColor;
-        box-shadow: 0 3px 10px #0001;
+        box-shadow: $blocksBoxShadow;
         scale: 1.03;
     }
 
@@ -48,16 +49,44 @@
         }
     }
 
-
-
     &_outline {
-        border: 1px solid #eee;
         background-color: transparent;
         color: #666;
         text-shadow: none;
-        outline: none;
+        outline: none;  
+        border: 1px solid #eee;
+        padding: 0 12px;
+        box-shadow: $blocksBoxShadow;
+        &.button_danger {
+            color: $buttonDangerBackgroundColor;
+            // border: 2px solid $buttonDangerBackgroundColor;
+
+            &:hover {
+                background-color: $buttonDangerOutlineHoverBackgroundColor;
+            }
+        }
+
+        &.button_primary {
+            color: $buttonPrimaryBackgroundColor;
+
+            &:hover {
+                background-color: $buttonPrimaryOutlineHoverBackgroundColor;
+            }
+            // border: 2px solid $buttonPrimaryBackgroundColor;
+        }
+
+        &.button_success {
+            color: $buttonSuccessBackgroundColor;
+            // border: 2px solid $buttonSuccessBackgroundColor;
+        }
+
+        &:hover {
+            border-color: transparent;
+            scale: unset;
+            color: #111;
+        }
     }
-    &_outline#{&_danger}{
-        color: $buttonDangerBackgroundColor;
-    }
+
+
+
 }

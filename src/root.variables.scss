@@ -11,7 +11,7 @@ $_layoutMainPadding: 20px;
 $_pageTitleHeight: 40px;
 $_pageTitleMarginBottom: 20px; 
 
-$_buttonHeight: 40px;
+$_buttonHeight: 35px;
 
 $_pageHeight: calc($_layoutMainHeight - 2 * $_layoutMainPadding - $_layoutMainMargin);
 
@@ -21,7 +21,7 @@ $_categoriesGridCollectionGap: 20px;
 $_categoriesGridCollectionListMaxHeight: calc($_categoriesGridCollectionMaxHeight - $_categoriesGridCollectionGap - $_buttonHeight);
 
 
-$buttonsBorderRadius: 15px;
+$buttonsBorderRadius: 16px;
 $blocksBorderRadius: 20px;
 $blocksPadding: 15px;
 $blocksBackgroundColor: #fff;
@@ -47,18 +47,22 @@ $buttonBackgroundColor: #eee;
 $buttonColor: $_layoutMainColor;
 $buttonHoverBackgroundColor: #ddd;
 
-$buttonPrimaryBackgroundColor: #016FB9;
+$buttonPrimaryBackgroundColor: #348cc7;
 $buttonPrimaryColor: #fff;
-$buttonPrimaryHoverBackgroundColor: #127Fca;
+$buttonPrimaryHoverBackgroundColor: #0164a7;
+$buttonPrimaryOutlineHoverBackgroundColor: #cce2f1;
+//127Fca
 
-$buttonSuccessBackgroundColor: #50C878;
+$buttonSuccessBackgroundColor: #50c894;
 $buttonSuccessColor: #fff;
-$buttonSuccessHoverBackgroundColor: #61D989;
+$buttonSuccessHoverBackgroundColor: #3d9f75;
+$buttonSuccessOutlineHoverBackgroundColor: #8cd4b5;
+//50c894
 
-$buttonDangerBackgroundColor: #db4e55;
+$buttonDangerBackgroundColor: #e4174b;
 $buttonDangerColor: #fff;
-$buttonDangerHoverBackgroundColor: #ec5f66;
-
-
+$buttonDangerHoverBackgroundColor: #bd1f47;
+$buttonDangerOutlineHoverBackgroundColor: #ffb3c6;
+//db4e68
 
 $pageTitleColor: $_layoutMainColor;

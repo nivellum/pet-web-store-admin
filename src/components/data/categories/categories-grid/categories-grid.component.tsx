@@ -1,12 +1,12 @@
 import "./categories-grid.style.scss";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { ListViewItemType, ListView } from "../../list-view/list-view.component"
 import CategoryCard from "../category-card/category-card.component";
 import { createCategory, getCategories } from "../../../../api/services/categories.service";
 import { Category } from "../../../../api/models/category.model";
 import Button from "../../../_common/button/button.component";
-import Modal from "../../modal/modal.component";
+import {ModalRef, Modal} from "../../modal/modal.component";
 import FormInput from "../../../form/form-input/form-input.component";
 import Form from "../../../form/form/form.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,7 +23,8 @@ const CategoriesGrid = ({ className }: CategoriesGridProps) => {
     const [currentCategory, setCurrentCategory] = useState<Category | null>(null);
     const [categories, setCategories] = useState<Category[] | null>(null);
     const [listViewData, setListViewData] = useState<ListViewItemType[] | null>(null);
-    const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+    const modalRef = useRef<ModalRef>();
 
     const handleCategoryClick = (id: string) => {
         const filteredCategories = categories?.filter(x => x._id == id);
@@ -31,7 +32,7 @@ const CategoriesGrid = ({ className }: CategoriesGridProps) => {
     }
 
     const handleClickAdd = () => {
-        setModalOpen(true);
+        modalRef.current?.open();
     }
 
     const submitCategoryForm = (event: FormEvent) => {
@@ -46,7 +47,7 @@ const CategoriesGrid = ({ className }: CategoriesGridProps) => {
                 console.log("newcat", newCategories);
                 setCategories(newCategories);
                 setCurrentCategory(data as Category);
-                setModalOpen(false);
+                modalRef.current?.close();
             }
         });
     }
@@ -73,17 +74,17 @@ const CategoriesGrid = ({ className }: CategoriesGridProps) => {
 
     return (
         <>
-            <Modal onClose={() => { setModalOpen(false); }} title={"Create category"} isOpen={modalOpen}>
+            <Modal ref={modalRef} title={"Create category"}>
                 <Form handleSubmit={submitCategoryForm}>
                     <FormInput name="name" label="Name" />
-                    <Button type="submit" style="success" text="Save" />
+                    <Button type="submit" color="success" text="Save" />
                 </Form>
             </Modal>
 
             <div className={`categories-grid ${className ?? ""}`}>
                 <div className="categories-grid__collection">
                     <div className="categories-grid__buttons">
-                        <Button style="primary" handleClick={handleClickAdd}>
+                        <Button color="primary" handleClick={handleClickAdd}>
                             <FontAwesomeIcon icon={faPlus} fontSize={"1rem"} />  <span>{"Add"}</span>
                         </Button>
                     </div>

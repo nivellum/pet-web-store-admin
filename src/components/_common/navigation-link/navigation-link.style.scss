@@ -1,4 +1,4 @@
-@import '../../../root.variables.scss'; 
+@import '../../../root.variables.scss';
 
 .navigation-link {
     display: inline-flex;
@@ -9,6 +9,7 @@
     background-color: transparent;
     transition: 0.2s all ease;
     height: 25px;
+    line-height: 20px;
     padding: 3px 15px;
     border-radius: $buttonsBorderRadius;
     font-size: 14px;
@@ -16,9 +17,8 @@
     user-select: none;
 
     &_root {
-        padding:3px 10px;
+        padding: 3px 10px;
         width: 18px;
-        
     }
 
     &:hover {
@@ -31,6 +31,7 @@
         color: $navLinkActiveColor;
         height: 30px;
         box-shadow: 0 0 20px $navLinkActiveBoxShadowColor;
+
         &:hover {
             background-color: $navLinkActiveHoverBackgroundColor;
             // color: #113;

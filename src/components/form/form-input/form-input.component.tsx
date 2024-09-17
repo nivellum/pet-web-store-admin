@@ -9,7 +9,6 @@ type FormInputProps = {
 }
 
 const FormInput = ({ type = "text", label, name, value }: FormInputProps) => {
-
     const [currentValue, setCurrentValue] = useState(value);
 
     useEffect(() => {
@@ -19,7 +18,7 @@ const FormInput = ({ type = "text", label, name, value }: FormInputProps) => {
     return (
         <div className="form-input">
             <label className="form-input__label" htmlFor={name}>{label}</label>
-            <input className="form-input__field" name={name} type={type} value={currentValue} />
+            <input className="form-input__field" name={name} type={type} defaultValue={currentValue} />
         </div>
     );
 }

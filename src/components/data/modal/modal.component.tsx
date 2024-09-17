@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import './modal.style.scss';
 import { time } from 'console';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,7 +7,6 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 type ModalProps = {
     children: React.ReactNode;
     footerChildren?: React.ReactNode;
-    isOpen: boolean;
     title?: string;
     transitionTimeMs?: number;
     closeOnBackdropClick?: boolean;
@@ -15,22 +14,23 @@ type ModalProps = {
     showCloseButton?: boolean;
 }
 
-const Modal = ({ showCloseButton = true, onClose, closeOnBackdropClick = true, transitionTimeMs = 300, title, isOpen, children, footerChildren }: ModalProps) => {
+export type ModalRef = {
+    open: Function;
+    close: Function;
+}
+
+export const Modal = forwardRef(({ showCloseButton = true, onClose, closeOnBackdropClick = true, transitionTimeMs = 300, title, children, footerChildren }: ModalProps, ref) => {
     const [openClass, setOpenClass] = useState("");
     const [visibleClass, setVisibleClass] = useState("");
     const [justMounted, setJustMounted] = useState(true);
-    const [open, setOpen] = useState(isOpen);
-
-    useEffect(() => {
-        setOpen(isOpen)
-    }, [isOpen]);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         let timeout: NodeJS.Timeout | null = null;
 
-        console.log("modal is open", open);
+        // console.log("is modal open", open);
 
-        if (open) {
+        if (isOpen) {
             setJustMounted(false);
             setOpenClass("modal_open");
             timeout = setTimeout(() => { setVisibleClass("modal_visible") }, 10);
@@ -47,15 +47,26 @@ const Modal = ({ showCloseButton = true, onClose, closeOnBackdropClick = true, t
         if (timeout)
             return () => clearTimeout(Number(timeout));
 
-    }, [open]);
+    }, [isOpen]);
+
+    const open = () => {
+        setIsOpen(true);
+    }
 
     const close = () => {
         if (closeOnBackdropClick)
-            setOpen(false);
+            setIsOpen(false);
 
         if (onClose)
             onClose();
     }
+
+    useImperativeHandle(ref, () => {
+        return {
+            open,
+            close
+        }
+    }, []); 
 
     return (
         <div className={`modal ${openClass} ${visibleClass}`} style={{ "transition": `${transitionTimeMs}ms opacity ease` }}>
@@ -72,6 +83,4 @@ const Modal = ({ showCloseButton = true, onClose, closeOnBackdropClick = true, t
 
         </div>
     )
-}
-
-export default Modal;
+});
