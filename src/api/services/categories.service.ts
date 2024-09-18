@@ -21,9 +21,29 @@ export const getCategory = async (categoryId: string): Promise<Category | AxiosE
     }
 }
 
-export const createCategory = async (name: string): Promise<Category | AxiosError<ApiError[], any> | any> => {
+export const createCategory = async (category: Category): Promise<Category | AxiosError<ApiError[], any> | any> => {
     try {
-        const response: AxiosResponse<Category, any> = await axios.post(getApiUrl(`categories`), { name });
+        const response: AxiosResponse<Category, any> = await axios.post(getApiUrl(`categories`), category);
+        return response.data;
+    } catch (e: AxiosError<ApiError[], any> | any) {
+        console.log();
+        return e.response.data as ApiError[];
+    }
+}
+
+export const updateCategory = async (category: Category): Promise<Category | AxiosError<ApiError[], any> | any> => {
+    try {
+        const response: AxiosResponse<Category, any> = await axios.put(getApiUrl(`categories/${category._id}`), category);
+        return response.data;
+    } catch (e: AxiosError<ApiError[], any> | any) {
+        console.log();
+        return e.response.data as ApiError[];
+    }
+}
+
+export const deleteCategory = async (category: Category) :Promise<void | AxiosError<ApiError[], any> | any> => {
+    try {
+        const response: AxiosResponse<Category, any> = await axios.put(getApiUrl(`categories/${category._id}`));
         return response.data;
     } catch (e: AxiosError<ApiError[], any> | any) {
         console.log();

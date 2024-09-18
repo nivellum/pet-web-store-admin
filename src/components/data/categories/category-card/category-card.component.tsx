@@ -7,6 +7,7 @@ import { ModalRef, Modal } from "../../modal/modal.component";
 import { FormEvent, useRef, useState } from "react";
 import FormInput from "../../../form/form-input/form-input.component";
 import Form from "../../../form/form/form.component";
+import { ListView } from "../../list-view/list-view.component";
 
 type CategoryCardProps = {
     id?: string;
@@ -46,7 +47,21 @@ const CategoryCard = ({ id, name }: CategoryCardProps) => {
                             <Button handleClick={() => { deleteModalRef.current?.open() }} color="danger" style="outline"><FontAwesomeIcon icon={faTrash} /></Button>
                         </div>
                     </div>
+                    <div className="category-card__content">
+                        <div className="category-card__params widget">
+                            <div className="widget__title">Parameters</div>
+                            <ListView items={null} activeItemId={""} handleClick={() => { }} />
+                        </div>
+                        <div className="category-card__param-values widget">
+                            <div className="widget__title">Parameter values</div>
+                            <ListView items={null} activeItemId={""} handleClick={() => { }} />
+                        </div>
+                        <div className="category-card__image widget">
+                            <div className="widget__title">Image</div>
+                        </div>
+                    </div>
                 </div>
+
             </>
         );
     } else {

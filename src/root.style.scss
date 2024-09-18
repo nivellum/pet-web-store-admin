@@ -1,6 +1,17 @@
 @import './root.variables.scss';
 
-body :nth-child(n){
+@font-face {
+    font-family: 'Moderustic';
+    src: url('../public/fonts/moderustic/Moderustic-VariableFont_wght.ttf');
+}
+
+body,
+body :nth-child(n) {
+    font-family: 'Moderustic', sans-serif;
+}
+
+body :nth-child(n) {
+    font-family: 'Moderustic', sans-serif;
     scrollbar-width: thin;
     scroll-padding: 10px;
     scrollbar-gutter: 10px;
@@ -16,8 +27,22 @@ body :nth-child(n){
     &__title {
         margin-bottom: $_pageTitleMarginBottom;
     }
-    
+
     &__content {
         flex-grow: 1;
+    }
+}
+
+.widget {
+    background: $widgetBackgroundColor;
+    padding: 10px;
+    border-radius: $widgetRadius;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &__title {
+        font-weight: 500;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
     }
 }

@@ -6,7 +6,7 @@ import CategoryCard from "../category-card/category-card.component";
 import { createCategory, getCategories } from "../../../../api/services/categories.service";
 import { Category } from "../../../../api/models/category.model";
 import Button from "../../../_common/button/button.component";
-import {ModalRef, Modal} from "../../modal/modal.component";
+import { ModalRef, Modal } from "../../modal/modal.component";
 import FormInput from "../../../form/form-input/form-input.component";
 import Form from "../../../form/form/form.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,9 +39,9 @@ const CategoriesGrid = ({ className }: CategoriesGridProps) => {
         event.preventDefault();
 
         const formData = new FormData(event.target as HTMLFormElement);
+        const category: Category = new Category(null, formData.get("name") as string, null);
 
-        console.log(formData);
-        createCategory(formData.get("name") as string).then((data: Category | ApiError[]) => {
+        createCategory(category).then((data: Category | ApiError[]) => {
             if (!ApiError.isApiError(data)) {
                 const newCategories = categories && categories ? [...categories, data as Category] : [data as Category];
                 console.log("newcat", newCategories);
@@ -61,7 +61,7 @@ const CategoriesGrid = ({ className }: CategoriesGridProps) => {
     useEffect(() => {
         if (categories)
             setListViewData((categories).map(x => {
-                const result: ListViewItemType = { id: x._id, name: x.name };
+                const result: ListViewItemType = { id: x._id as string, name: x.name };
                 return result;
             }));
     }, [categories])
@@ -88,10 +88,10 @@ const CategoriesGrid = ({ className }: CategoriesGridProps) => {
                             <FontAwesomeIcon icon={faPlus} fontSize={"1rem"} />  <span>{"Add"}</span>
                         </Button>
                     </div>
-                    <ListView className="categories-grid__list" handleClick={handleCategoryClick} activeItemId={currentCategory?._id} items={listViewData} />
+                    <ListView className="categories-grid__list" handleClick={handleCategoryClick} activeItemId={currentCategory?._id as string} items={listViewData} />
                 </div>
                 <div className="categories-grid__card">
-                    <CategoryCard id={currentCategory?._id} name={currentCategory?.name} />
+                    <CategoryCard id={currentCategory?._id as string} name={currentCategory?.name} />
                 </div>
             </div>
         </>
