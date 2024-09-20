@@ -1,17 +1,17 @@
-@import '../../../../root.variables.scss';
+@import '../../../root.variables.scss';
 
-.categories-grid {
+.page-grid {
     display: flex;
     flex-direction: row;
     gap: 30px;
-    max-height: $_categoriesGridMaxHeight;
+    max-height: $_pageGridMaxHeight;
 
     &__collection {
         display: flex;
         flex-direction: column;
         flex-basis: 300px;
-        gap: $_categoriesGridCollectionGap;
-        max-height: $_categoriesGridCollectionMaxHeight;
+        gap: $_pageGridCollectionGap;
+        max-height: $_pageGridCollectionMaxHeight;
         // overflow-y: hidden;
     }
 
@@ -36,7 +36,15 @@
         box-shadow: $blocksBoxShadow;
         // padding: 10px;
         flex-grow: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
         // max-height: fit-content;
+
+        & > :nth-child(n) {
+            flex-grow: 1;
+        }
         
     }
 }

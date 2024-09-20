@@ -7,11 +7,13 @@ import ClientsPage from "./pages/clients-page/clients-page.component";
 import ProductsPage from "./pages/products-page/products-page.component";
 import UsersPage from "./pages/users-page/users-page.component";
 import LoginPage from "./pages/login-page/login-page.component";
+import BaseCategoriesPage from "./pages/base-categories-page/base-categories-page.component";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
+            <Route path="/base-categories" element={<BaseCategoriesPage />} />
             <Route path="/categories" element={<CategoriesPage />} />
             <Route path="/orders" element={<OrdersPage />} />
             <Route path="/clients" element={<ClientsPage />} />

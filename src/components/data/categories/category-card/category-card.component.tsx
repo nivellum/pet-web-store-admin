@@ -3,11 +3,11 @@ import "./category-card.style.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../../_common/button/button.component";
-import { ModalRef, Modal } from "../../modal/modal.component";
+import { ModalRef, Modal } from "../../../_common/modal/modal.component";
 import { FormEvent, useRef, useState } from "react";
 import FormInput from "../../../form/form-input/form-input.component";
 import Form from "../../../form/form/form.component";
-import { ListView } from "../../list-view/list-view.component";
+import { ListView } from "../../../_common/list-view/list-view.component";
 
 type CategoryCardProps = {
     id?: string;

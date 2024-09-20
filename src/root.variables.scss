@@ -15,10 +15,10 @@ $_buttonHeight: 35px;
 
 $_pageHeight: calc($_layoutMainHeight - 2 * $_layoutMainPadding - $_layoutMainMargin);
 
-$_categoriesGridMaxHeight: calc($_pageHeight - $_pageTitleHeight - $_pageTitleMarginBottom);
-$_categoriesGridCollectionMaxHeight: $_categoriesGridMaxHeight;
-$_categoriesGridCollectionGap: 20px;
-$_categoriesGridCollectionListMaxHeight: calc($_categoriesGridCollectionMaxHeight - $_categoriesGridCollectionGap - $_buttonHeight);
+$_pageGridMaxHeight: calc($_pageHeight - $_pageTitleHeight - $_pageTitleMarginBottom);
+$_pageGridCollectionMaxHeight: $_pageGridMaxHeight;
+$_pageGridCollectionGap: 20px;
+$_pageGridCollectionListMaxHeight: calc($_pageGridCollectionMaxHeight - $_pageGridCollectionGap - $_buttonHeight);
 
 
 $buttonsBorderRadius: 16px;

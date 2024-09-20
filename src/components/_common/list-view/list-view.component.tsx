@@ -19,25 +19,25 @@ export const ListView = ({ className, activeItemId, items, handleClick }: ListVi
     const [justMounted, setJustMounted] = useState<boolean>(true);
     const lastAddedItemRef = useRef<HTMLLIElement>(null);
 
-    useEffect(() => {
-        if (justMounted) setJustMounted(false);
-        else {
-            if (items)
-                setLastAddedItem(items.slice(items.length - 1)[0]);
-        }
-    }, [items]);
+    // useEffect(() => {
+    //     if (justMounted) setJustMounted(false);
+    //     else {
+    //         if (items)
+    //             setLastAddedItem(items.slice(items.length - 1)[0]);
+    //     }
+    // }, [items]);
 
-    useEffect(() => {
-        if(lastAddedItemRef.current)
-            lastAddedItemRef.current.scrollIntoView();
-    }, [lastAddedItemRef?.current]);
+    // useEffect(() => {
+    //     if(lastAddedItemRef.current)
+    //         lastAddedItemRef.current.scrollIntoView();
+    // }, [lastAddedItemRef?.current]);
 
 
-    console.log({ lastAddedItem, justMounted });
+    // console.log({ lastAddedItem, justMounted });
 
     return (
         <ul className={`list-view ${className ?? ''}`}>
-            <li className='list-view__count'> {items?.length} items</li>
+            <li className='list-view__count'> {items === null || items?.length === 0 ? "No items" : items?.length === 1 ? `${items?.length} item` : `${items?.length} items`}</li>
             {items && items.map((x: ListViewItemType, index: number) =>
                 <li
                     {...(x.id === lastAddedItem?.id ? { ref: lastAddedItemRef } : {})}

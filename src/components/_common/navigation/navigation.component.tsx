@@ -11,6 +11,7 @@ const Navigation = () => {
             </div>
             <div className="navigation__buttons">
                 <NavigationLink isRoot={true} to="/" icon={faHouse} />
+                <NavigationLink title="Base Categories" to="/base-categories" icon={faTableList} />
                 <NavigationLink title="Categories" to="/categories" icon={faTableList} />
                 <NavigationLink title="Products" to="/products" icon={faCube} />
                 <NavigationLink title="Orders" to="/orders" icon={faBasketShopping} />

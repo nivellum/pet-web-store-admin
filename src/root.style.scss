@@ -10,12 +10,32 @@ body :nth-child(n) {
     font-family: 'Moderustic', sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 7px;
+    // padding: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #eee;
+    border-radius: 10px;
+    // background-color: transparent;
+}
+
+::-webkit-scrollbar-track{
+    // padding-top: 20px;
+    // padding-bottom: 40px;
+    background-color: transparent;
+    // background-color: red;
+}
+
 body :nth-child(n) {
     font-family: 'Moderustic', sans-serif;
-    scrollbar-width: thin;
-    scroll-padding: 10px;
-    scrollbar-gutter: 10px;
-    overflow-clip-margin: 10px;
+    // scrollbar-width: thin;
+    // scroll-padding: 10px;
+    // scrollbar-gutter: 10px;
+    // overflow-clip-margin: 10px;
+
+   
 }
 
 .page {
