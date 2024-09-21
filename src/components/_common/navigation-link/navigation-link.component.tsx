@@ -11,14 +11,12 @@ type NavigationLinkProps = {
     isRoot?: boolean;
 }
 
-
-
 const NavigationLink = ({ to, icon, title, extraClass, isRoot }: NavigationLinkProps) => {
 
     return (
-        <NavLink to={to}
+        <NavLink to={to} unstable_viewTransition
             className={({ isActive, isTransitioning, isPending }) =>
-                `navigation-link ${isRoot ? 'navigation-link_root' : ''} ${extraClass ?? ''} ${isActive ? 'navigation-link_active' : ''} ${isTransitioning ? 'navigation-link_loading' : ''}`}
+                `navigation-link ${isRoot ? 'navigation-link_root' : ''} ${extraClass ?? ''} ${isActive ? 'navigation-link_active' : ''}`}
         >
             <FontAwesomeIcon className='navigation-link__logo' icon={icon} />
             {title && <span className='navigation-link__title'>{title}</span>}

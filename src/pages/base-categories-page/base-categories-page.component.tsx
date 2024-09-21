@@ -11,6 +11,8 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import PageGrid from "../../components/_common/page-grid/page-grid.component";
 import { BaseCategory } from "../../api/models/base-category.model";
 import { createBaseCategory, getBaseCategories } from "../../api/services/base-categories.service";
+import ItemCard from "../../components/_common/item-card/item-card.component";
+import BaseCategoryCard from "../../components/data/base-categories/base-category-card/base-category-card.components";
 // import ListView from "../../components/data/list-view/list-view.component";
 
 const BaseCategoriesPage = () => {
@@ -71,23 +73,23 @@ const BaseCategoriesPage = () => {
             </Modal>
 
             <PageTitle className="page__title" title="Base Categories" />
-            {/* <div className="page__content"> */}
-                <PageGrid
-                    className="page__content"
-                    buttons={(
-                        <Button color="primary" handleClick={handleClickAdd}>
-                            <FontAwesomeIcon icon={faPlus} fontSize={"1rem"} />  <span>{"Add"}</span>
-                        </Button>
-                    )}
-                    itemsList={(
-                        <ListView className="" handleClick={handleCategoryClick} activeItemId={currentBaseCategory?._id as string} items={listViewData} />
-                    )}
-                    itemCard={(
-                        null
-                        // <CategoryCard id={currentBaseCategory?._id as string} name={currentBaseCategory?.name} />
-                    )}
-                />
-            {/* </div> */}
+            <PageGrid
+                className="page__content"
+                buttons={(
+                    <Button color="primary" handleClick={handleClickAdd}>
+                        <FontAwesomeIcon icon={faPlus} fontSize={"1rem"} />  <span>{"Add"}</span>
+                    </Button>
+                )}
+                itemsList={(
+                    <ListView className="" handleClick={handleCategoryClick} activeItemId={currentBaseCategory?._id as string} items={listViewData} />
+                )}
+                itemCard={(
+                    <BaseCategoryCard 
+                        id={currentBaseCategory?._id as string}
+                        name={currentBaseCategory?.name}
+                    />
+                )}
+            />
         </div>
     );
 }

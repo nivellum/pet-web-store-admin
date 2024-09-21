@@ -19,7 +19,7 @@ const CategoriesPage = () => {
     const [categories, setCategories] = useState<Category[] | null>(null);
     const [listViewData, setListViewData] = useState<ListViewItemType[] | null>(null);
 
-    const modalRef = useRef<ModalRef>();
+    const addModalRef = useRef<ModalRef>();
 
     const handleCategoryClick = (id: string) => {
         const filteredCategories = categories?.filter(x => x._id == id);
@@ -27,7 +27,7 @@ const CategoriesPage = () => {
     }
 
     const handleClickAdd = () => {
-        modalRef.current?.open();
+        addModalRef.current?.open();
     }
 
     const submitAddForm = (event: FormEvent) => {
@@ -42,7 +42,7 @@ const CategoriesPage = () => {
                 console.log("newcat", newCategories);
                 setCategories(newCategories);
                 setCurrentCategory(data as Category);
-                modalRef.current?.close();
+                addModalRef.current?.close();
             }
         });
     }
@@ -70,7 +70,7 @@ const CategoriesPage = () => {
     return (
         <div className="page">
 
-            <Modal ref={modalRef} title={"Create category"}>
+            <Modal ref={addModalRef} title={"Create category"}>
                 <Form handleSubmit={submitAddForm}>
                     <FormInput name="name" label="Name" />
                     <Button type="submit" color="success" text="Save" />
@@ -78,21 +78,25 @@ const CategoriesPage = () => {
             </Modal>
 
             <PageTitle className="page__title" title="Categories" />
-            <div className="page__content">
-                <PageGrid
-                    buttons={(
-                        <Button color="primary" handleClick={handleClickAdd}>
-                            <FontAwesomeIcon icon={faPlus} fontSize={"1rem"} />  <span>{"Add"}</span>
-                        </Button>
-                    )}
-                    itemsList={(
-                        <ListView className="" handleClick={handleCategoryClick} activeItemId={currentCategory?._id as string} items={listViewData} />
-                    )}
-                    itemCard={(
-                        <CategoryCard id={currentCategory?._id as string} name={currentCategory?.name} />
-                    )}
-                />
+            <div className="page__filter">
+
             </div>
+            <PageGrid
+                className="page__content"
+                buttons={(
+                    <Button color="primary" handleClick={handleClickAdd}>
+                        <FontAwesomeIcon icon={faPlus} fontSize={"1rem"} />  <span>{"Add"}</span>
+                    </Button>
+                )}
+                itemsList={(
+                    <ListView className="" handleClick={handleCategoryClick} activeItemId={currentCategory?._id as string} items={listViewData} />
+                )}
+                itemCard={
+                    <>
+                        <CategoryCard id={currentCategory?._id as string} name={currentCategory?.name} />
+                    </>
+                }
+            />
         </div>
     );
 }
