@@ -1,6 +1,6 @@
 @import '../../../root.variables.scss';
 
-.item-card{
+.item-card {
     display: flex;
     flex-direction: column;
     padding: $blocksPadding;
@@ -26,7 +26,7 @@
         font-weight: 600;
     }
 
-    &__header{
+    &__header {
         gap: 10px;
         display: flex;
         justify-content: space-between;
@@ -37,12 +37,16 @@
         gap: 10px;
     }
 
-    &__content{
+    &__content {
         display: flex;
         flex-direction: row;
         flex-grow: 1;
         box-sizing: border-box;
         width: 100%;
         gap: 10px;
+
+        &> :nth-child(n) {
+            flex-grow: 1;
+        }
     }
 }

@@ -5,24 +5,41 @@ import PageTitle from "../../components/_common/page-title/page-title.component"
 import FormInput from "../../components/form/form-input/form-input.component";
 import Form from "../../components/form/form/form.component";
 import { ApiError } from "../../api/models/api-error.model";
-import { ListView, ListViewItemType } from "../../components/_common/list-view/list-view.component";
+import { ListView, ListViewItem } from "../../components/_common/list-view/list-view.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import PageGrid from "../../components/_common/page-grid/page-grid.component";
 import { BaseCategory } from "../../api/models/base-category.model";
 import { createBaseCategory, getBaseCategories } from "../../api/services/base-categories.service";
-import ItemCard from "../../components/_common/item-card/item-card.component";
 import BaseCategoryCard from "../../components/data/base-categories/base-category-card/base-category-card.components";
 // import ListView from "../../components/data/list-view/list-view.component";
 
 const BaseCategoriesPage = () => {
     const [currentBaseCategory, setCurrentBaseCategory] = useState<BaseCategory | null>(null);
     const [baseCategories, setBaseCategories] = useState<BaseCategory[] | null>(null);
-    const [listViewData, setListViewData] = useState<ListViewItemType[] | null>(null);
-
+    const [listViewData, setListViewData] = useState<ListViewItem[] | null>(null);
+    const [tempNewBaseCategory, setTempNewBaseCategory] = useState<BaseCategory | null>(null);
     const modalRef = useRef<ModalRef>();
 
-    const handleCategoryClick = (id: string) => {
+    const handleUpdate = (updatedBaseCategory: BaseCategory) => {
+        if (baseCategories) {
+            const itemIndex = baseCategories?.indexOf(currentBaseCategory as BaseCategory);
+            const cloneBaseCategories = baseCategories.slice();
+            cloneBaseCategories.splice(baseCategories?.indexOf(currentBaseCategory as BaseCategory), 1, updatedBaseCategory);
+            setBaseCategories(cloneBaseCategories);
+        }
+    }
+
+    const handleDelete = () => {
+        if (baseCategories) {
+            const cloneBaseCategories = baseCategories.slice();
+            cloneBaseCategories.splice(baseCategories?.indexOf(currentBaseCategory as BaseCategory), 1);
+            setBaseCategories(cloneBaseCategories);
+            setCurrentBaseCategory(null);
+        }
+    }
+
+    const handleBaseCategoryClick = (id: string) => {
         const filteredBaseCategories = baseCategories?.filter(x => x._id == id);
         setCurrentBaseCategory(filteredBaseCategories != null && filteredBaseCategories.length > 0 ? filteredBaseCategories[0] : null);
     }
@@ -31,7 +48,7 @@ const BaseCategoriesPage = () => {
         modalRef.current?.open();
     }
 
-    const submitAddForm = (event: FormEvent) => {
+    const submitCreateForm = (event: FormEvent) => {
         event.preventDefault();
 
         const formData = new FormData(event.target as HTMLFormElement);
@@ -40,7 +57,7 @@ const BaseCategoriesPage = () => {
         createBaseCategory(baseCategory).then((data: BaseCategory | ApiError[]) => {
             if (!ApiError.isApiError(data)) {
                 const newBaseCategories = baseCategories && baseCategories ? [...baseCategories, data as BaseCategory] : [data as BaseCategory];
-                console.log("new base category", newBaseCategories);
+                console.log("new base category", data);
                 setBaseCategories(newBaseCategories);
                 setCurrentBaseCategory(data as BaseCategory);
                 modalRef.current?.close();
@@ -55,18 +72,24 @@ const BaseCategoriesPage = () => {
     }, []);
 
     useEffect(() => {
-        if (baseCategories)
+        if (baseCategories) {
             setListViewData((baseCategories).map(x => {
-                const result: ListViewItemType = { id: x._id as string, name: x.name };
+                const result: ListViewItem = {
+                    id: x._id as string,
+                    name: x.name,
+                    handleClick: () => { handleBaseCategoryClick(x._id as string) }
+                };
                 return result;
             }));
-    }, [baseCategories])
+        }
+    }, [baseCategories]);
+
 
     return (
         <div className="page">
 
             <Modal ref={modalRef} title={"Create Base Category"}>
-                <Form handleSubmit={submitAddForm}>
+                <Form handleSubmit={submitCreateForm}>
                     <FormInput name="name" label="Name" />
                     <Button type="submit" color="success" text="Save" />
                 </Form>
@@ -81,11 +104,13 @@ const BaseCategoriesPage = () => {
                     </Button>
                 )}
                 itemsList={(
-                    <ListView className="" handleClick={handleCategoryClick} activeItemId={currentBaseCategory?._id as string} items={listViewData} />
+                    <ListView className="" activeItemId={currentBaseCategory?._id as string} items={listViewData} />
                 )}
                 itemCard={(
-                    <BaseCategoryCard 
-                        id={currentBaseCategory?._id as string}
+                    <BaseCategoryCard
+                        onUpdate={handleUpdate}
+                        onDelete={handleDelete}
+                        id={currentBaseCategory?._id}
                         name={currentBaseCategory?.name}
                     />
                 )}

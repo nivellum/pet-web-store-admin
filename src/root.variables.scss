@@ -5,7 +5,7 @@ $_layoutPrimaryColor: #016FB9;
 $_layoutHeight: 100vh;
 $_layoutWidth: 100vw;
 $_layoutMainHeight: calc($_layoutHeight - $_headerHeight);
-$_layoutMainMargin: 5px;
+$_layoutMainMargin: 10px;
 $_layoutMainPadding: 20px;
 
 $_pageTitleHeight: 40px;
@@ -67,5 +67,6 @@ $buttonDangerOutlineHoverBackgroundColor: #ffb3c6;
 
 $pageTitleColor: $_layoutMainColor;
 
-$widgetBackgroundColor: #eee;
+$widgetBackgroundColor: #fff;
 $widgetRadius: 15px;
+$widgetBorder: 1px solid #eee;

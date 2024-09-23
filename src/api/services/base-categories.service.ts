@@ -43,7 +43,7 @@ export const updateBaseCategory = async (category: BaseCategory): Promise<BaseCa
 
 export const deleteBaseCategory = async (category: BaseCategory) :Promise<void | AxiosError<ApiError[], any> | any> => {
     try {
-        const response: AxiosResponse<BaseCategory, any> = await axios.put(getApiUrl(`base-categories/${category._id}`));
+        const response: AxiosResponse<BaseCategory, any> = await axios.delete(getApiUrl(`base-categories/${category._id}`));
         return response.data;
     } catch (e: AxiosError<ApiError[], any> | any) {
         console.log();

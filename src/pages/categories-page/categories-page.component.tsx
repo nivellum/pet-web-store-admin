@@ -7,7 +7,7 @@ import Form from "../../components/form/form/form.component";
 import { createCategory, getCategories } from "../../api/services/categories.service";
 import { Category } from "../../api/models/category.model";
 import { ApiError } from "../../api/models/api-error.model";
-import { ListView, ListViewItemType } from "../../components/_common/list-view/list-view.component";
+import { ListView, ListViewItem } from "../../components/_common/list-view/list-view.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import CategoryCard from "../../components/data/categories/category-card/category-card.component";
@@ -17,7 +17,7 @@ import PageGrid from "../../components/_common/page-grid/page-grid.component";
 const CategoriesPage = () => {
     const [currentCategory, setCurrentCategory] = useState<Category | null>(null);
     const [categories, setCategories] = useState<Category[] | null>(null);
-    const [listViewData, setListViewData] = useState<ListViewItemType[] | null>(null);
+    const [listViewData, setListViewData] = useState<ListViewItem[] | null>(null);
 
     const addModalRef = useRef<ModalRef>();
 
@@ -48,18 +48,23 @@ const CategoriesPage = () => {
     }
 
     useEffect(() => {
-        getCategories().then((data: Category[]) => {
-            setCategories(data);
-        });
+        // getCategories().then((data: Category[]) => {
+        //     setCategories(data);
+        // });
     }, []);
 
     useEffect(() => {
         if (categories)
-            setListViewData((categories).map(x => {
-                const result: ListViewItemType = { id: x._id as string, name: x.name };
+            setListViewData(categories.map(x => {
+                const result: ListViewItem = {
+                    id: x._id as string,
+                    name: x.name,
+                    handleClick: () => { handleCategoryClick(x._id as string) }
+                };
+
                 return result;
             }));
-    }, [categories])
+    }, [categories]);
 
     useEffect(() => {
         if (currentCategory != null) {
@@ -89,7 +94,7 @@ const CategoriesPage = () => {
                     </Button>
                 )}
                 itemsList={(
-                    <ListView className="" handleClick={handleCategoryClick} activeItemId={currentCategory?._id as string} items={listViewData} />
+                    <ListView className="" activeItemId={currentCategory?._id as string} items={listViewData} />
                 )}
                 itemCard={
                     <>

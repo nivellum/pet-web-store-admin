@@ -6,7 +6,7 @@ type ButtonProps = {
     text?: string;
     children?: React.ReactNode;
     color?: "primary" | "danger" | "warning" | "success" | "dark" | "light";
-    style?: "default" | "outline";
+    style?: "default" | "outline" | "small";
     handleClick?: Function;
     type?: "button" | "reset" | "submit";
 }

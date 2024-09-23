@@ -3,9 +3,9 @@ import { getApiUrl } from "../../utils/api-helpers";
 import { Category } from "../models/category.model";
 import { ApiError } from "../models/api-error.model";
 
-export const getCategories = async (): Promise<Category[] | AxiosError<ApiError[], any> | any> => {
+export const getCategories = async (baseCategoryId?: string): Promise<Category[] | AxiosError<ApiError[], any> | any> => {
     try {
-        const response: AxiosResponse<Category[], any> = await axios.get(getApiUrl("categories"));
+        const response: AxiosResponse<Category[], any> = await axios.get(getApiUrl(`categories?baseCategoryId=${baseCategoryId}`));
         return response.data;
     } catch (e: AxiosError<ApiError[], any> | any) {
         return e.response.data as ApiError[]
@@ -41,7 +41,7 @@ export const updateCategory = async (category: Category): Promise<Category | Axi
     }
 }
 
-export const deleteCategory = async (category: Category) :Promise<void | AxiosError<ApiError[], any> | any> => {
+export const deleteCategory = async (category: Category): Promise<void | AxiosError<ApiError[], any> | any> => {
     try {
         const response: AxiosResponse<Category, any> = await axios.put(getApiUrl(`categories/${category._id}`));
         return response.data;

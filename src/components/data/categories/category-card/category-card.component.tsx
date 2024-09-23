@@ -44,11 +44,11 @@ const CategoryCard = ({ id, name }: CategoryCardProps) => {
             >
                 <div className="widget">
                     <div className="widget__title">Parameters</div>
-                    <ListView items={null} activeItemId={""} handleClick={() => { }} />
+                    <ListView items={null} activeItemId={""} />
                 </div>
                 <div className="widget">
                     <div className="widget__title">Parameter values</div>
-                    <ListView items={null} activeItemId={""} handleClick={() => { }} />
+                    <ListView items={null} activeItemId={""} />
                 </div>
                 <div className="widget">
                     <div className="widget__title">Image</div>
