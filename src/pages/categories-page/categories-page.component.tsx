@@ -78,7 +78,7 @@ const CategoriesPage = () => {
             <Modal ref={addModalRef} title={"Create category"}>
                 <Form handleSubmit={submitAddForm}>
                     <FormInput name="name" label="Name" />
-                    <Button type="submit" color="success" text="Save" />
+                    <Button type="submit" color="success">Create</Button>
                 </Form>
             </Modal>
 
@@ -90,7 +90,7 @@ const CategoriesPage = () => {
                 className="page__content"
                 buttons={(
                     <Button color="primary" handleClick={handleClickAdd}>
-                        <FontAwesomeIcon icon={faPlus} fontSize={"1rem"} />  <span>{"Add"}</span>
+                        <FontAwesomeIcon icon={faPlus} fontSize={"1rem"} />  <span>Add</span>
                     </Button>
                 )}
                 itemsList={(

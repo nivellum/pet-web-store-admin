@@ -8,7 +8,7 @@
     flex-direction: column;
     padding: 0;
     margin: 0;
-    position: relative;
+    // position: relative;
     width: inherit;
 
     &__item {
@@ -57,7 +57,7 @@
         font-size: 0.8rem;
         font-weight: 500;
         color: #999;
-        position: static;
+        // position: static;
         left: 0;
         right: 0;
         width: inherit;

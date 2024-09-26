@@ -1,0 +1,48 @@
+@import "../../../root.variables.scss";
+
+.toolbar{
+    display: none;
+    position: absolute;
+
+    background-color: #fff;
+    border: $blocksBorder;
+    border-radius: $blocksBorderRadius;
+    box-shadow: $blocksBoxShadow;
+    flex-direction: column;
+    // gap: 10px;
+    opacity: 0;
+    
+    &_open {
+        display: flex;
+    }
+
+    &_visible {
+        opacity: 1;
+    }
+
+    &__option {
+        transition: 0.2s background-color ease;
+        display: flex;
+        padding: 12px 20px;
+
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #111;
+
+        &:first-child{
+            border-radius: $blocksBorderRadius $blocksBorderRadius 0 0;
+        }
+
+        &:last-child{
+            border-radius: 0 0 $blocksBorderRadius $blocksBorderRadius;
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #eee;
+        }
+
+        &:hover{
+            background-color: #f7f7f7;
+        }
+    }
+}

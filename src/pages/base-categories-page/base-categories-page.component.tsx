@@ -88,10 +88,10 @@ const BaseCategoriesPage = () => {
     return (
         <div className="page">
 
-            <Modal ref={modalRef} title={"Create Base Category"}>
+            <Modal ref={modalRef} title={"Create base category"}>
                 <Form handleSubmit={submitCreateForm}>
                     <FormInput name="name" label="Name" />
-                    <Button type="submit" color="success" text="Save" />
+                    <Button type="submit" color="success">Create</Button>
                 </Form>
             </Modal>
 
@@ -100,7 +100,7 @@ const BaseCategoriesPage = () => {
                 className="page__content"
                 buttons={(
                     <Button color="primary" handleClick={handleClickAdd}>
-                        <FontAwesomeIcon icon={faPlus} fontSize={"1rem"} />  <span>{"Add"}</span>
+                        <span><FontAwesomeIcon icon={faPlus} fontSize={"1rem"} /> <span>Add</span></span>
                     </Button>
                 )}
                 itemsList={(

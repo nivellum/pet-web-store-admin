@@ -20,7 +20,7 @@ const ItemCard = ({ id, name, handleEditClick, handleDeleteClick, children, extr
                     <div className="item-card__name">{name}</div>
                     <div className="item-card__header-buttons">
                         {extraButtons}
-                        <Button handleClick={handleEditClick} color="primary" style="outline"><FontAwesomeIcon icon={faEdit} /> <span>{"Edit"}</span></Button>
+                        <Button handleClick={handleEditClick} color="primary" style="outline"><span><FontAwesomeIcon icon={faEdit} /> <span>{"Edit"}</span></span></Button>
                         <Button handleClick={handleDeleteClick} color="danger" style="outline"><FontAwesomeIcon icon={faTrash} /></Button>
                     </div>
                 </div>

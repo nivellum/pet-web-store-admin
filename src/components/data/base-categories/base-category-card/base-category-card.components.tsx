@@ -64,7 +64,7 @@ const BaseCategoryCard = ({ id, name, onUpdate, onDelete }: BaseCategoriesCardPr
                 <Form handleSubmit={submitUpdateBaseCategoryForm}>
                     <FormInput type="hidden" name="_id" value={id as string} />
                     <FormInput name="name" label="Name" value={name} />
-                    <Button type="submit" color="success" text="Update" />
+                    <Button type="submit" color="success">Update</Button>
                 </Form>
             </Modal>
 
@@ -74,7 +74,7 @@ const BaseCategoryCard = ({ id, name, onUpdate, onDelete }: BaseCategoriesCardPr
                     <span style={{ marginBottom: "20px" }}>
                         <span>Are you sure you want to delete <b>"{name}"</b>?</span>
                     </span>
-                    <Button type="submit" color="danger" text="Delete" />
+                    <Button type="submit" color="danger">Delete</Button>
                 </Form>
             </Modal>
 

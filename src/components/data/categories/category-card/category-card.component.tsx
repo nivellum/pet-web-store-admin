@@ -25,14 +25,14 @@ const CategoryCard = ({ id, name }: CategoryCardProps) => {
             <Modal title="Edit Category" ref={editModalRef}>
                 <Form handleSubmit={submitUpdateForm}>
                     <FormInput name="name" label="Name" value={name} />
-                    <Button type="submit" color="success" text="Update" />
+                    <Button type="submit" color="success">Update</Button>
                 </Form>
             </Modal>
 
             <Modal title="Delete Category" ref={deleteModalRef}>
                 <Form handleSubmit={submitDeleteForm}>
                     <span style={{ marginBottom: "20px" }}>Are you sure you want to delete <b>"{name}"</b>?</span>
-                    <Button type="submit" color="danger" text="Delete" />
+                    <Button type="submit" color="danger">Delete</Button>
                 </Form>
             </Modal>
 

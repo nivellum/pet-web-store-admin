@@ -49,7 +49,9 @@ const CategoriesListWidget = ({ baseCategoryId }: CategoriesListWidgetProps) => 
             setCategoriesListViewItems((categories).map(x => {
                 const result: ListViewItem = {
                     id: x._id as string, name: x.name, itemOptions: [
-                        { text: "Go to Category Card", handleClick: () => { console.log(x._id) } }
+                        { text: "Open category", handleClick: () => { console.log(x._id) } },
+                        { text: "Edit", handleClick: () => { console.log(x._id) } },
+                        { text: "Delete", handleClick: () => { console.log(x._id) } }
                     ]
                 };
                 return result;
@@ -63,7 +65,7 @@ const CategoriesListWidget = ({ baseCategoryId }: CategoriesListWidgetProps) => 
                 <Form handleSubmit={submitCreateCategoryForm}>
                     <FormInput type="hidden" name="baseCategoryId" value={baseCategoryId as string} />
                     <FormInput name="name" label="Name" />
-                    <Button type="submit" color="success" text="Create" />
+                    <Button type="submit" color="success">Create</Button>
                 </Form>
             </Modal>
 
